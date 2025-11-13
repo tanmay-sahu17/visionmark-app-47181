@@ -1,4 +1,4 @@
-import { Video, Upload, FileText, Sparkles } from "lucide-react";
+import { Video, Upload, FileText, Sparkles, TrendingUp, Users, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 
@@ -32,8 +32,38 @@ export const Dashboard = () => {
   return (
     <div className="flex-1 overflow-y-auto p-6 space-y-6">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold text-foreground">Welcome back!</h2>
-        <p className="text-muted-foreground">Choose an action to get started</p>
+        <h2 className="text-2xl font-bold text-foreground">Welcome back, Prof. Sarah!</h2>
+        <p className="text-muted-foreground">CS Department • Computer Networks</p>
+      </div>
+
+      <div className="grid grid-cols-3 gap-3">
+        <Card className="p-4">
+          <div className="flex flex-col items-center text-center space-y-2">
+            <Users className="h-5 w-5 text-primary" />
+            <div>
+              <p className="text-2xl font-bold text-foreground">45</p>
+              <p className="text-xs text-muted-foreground">Students</p>
+            </div>
+          </div>
+        </Card>
+        <Card className="p-4">
+          <div className="flex flex-col items-center text-center space-y-2">
+            <TrendingUp className="h-5 w-5 text-success" />
+            <div>
+              <p className="text-2xl font-bold text-success">92%</p>
+              <p className="text-xs text-muted-foreground">Avg Rate</p>
+            </div>
+          </div>
+        </Card>
+        <Card className="p-4">
+          <div className="flex flex-col items-center text-center space-y-2">
+            <Calendar className="h-5 w-5 text-accent" />
+            <div>
+              <p className="text-2xl font-bold text-foreground">12</p>
+              <p className="text-xs text-muted-foreground">Sessions</p>
+            </div>
+          </div>
+        </Card>
       </div>
 
       <div className="space-y-4">
