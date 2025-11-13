@@ -1,16 +1,16 @@
 import { MobileContainer } from "@/components/MobileContainer";
 import { TopBar } from "@/components/TopBar";
 import { BottomNav } from "@/components/BottomNav";
-import { Dashboard } from "@/components/Dashboard";
+import { ResultsScreen } from "@/components/ResultsScreen";
 
-const Index = () => {
+const Results = () => {
   return (
     <MobileContainer>
       <TopBar />
-      <Dashboard />
+      <ResultsScreen />
       <BottomNav />
     </MobileContainer>
   );
 };
 
-export default Index;
+export default Results;
