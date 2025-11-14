@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Upload, Calendar as CalendarIcon, Zap, Camera } from "lucide-react";
+import { Upload, Calendar as CalendarIcon, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -14,11 +14,10 @@ import { format } from "date-fns";
 export const UploadVideoScreen = () => {
   const [lectureNumber, setLectureNumber] = useState("1");
   const [date, setDate] = useState<Date>(new Date());
-  const [shutterValue, setShutterValue] = useState(50);
-  const [flashEnabled, setFlashEnabled] = useState(false);
+  const shutterValue = 200; // Fixed value
 
   const handleUpload = () => {
-    console.log("Upload with:", { lectureNumber, date, shutterValue, flashEnabled });
+    console.log("Upload with:", { lectureNumber, date, shutterValue });
   };
 
   return (
@@ -85,41 +84,12 @@ export const UploadVideoScreen = () => {
           </Popover>
         </div>
 
-        {/* Shutter Value */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <Label className="text-foreground font-medium">Shutter Speed</Label>
-            <span className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
-              {shutterValue}
-            </span>
-          </div>
-          <Slider
-            value={[shutterValue]}
-            onValueChange={(value) => setShutterValue(value[0])}
-            min={1}
-            max={200}
-            step={1}
-            className="w-full"
-          />
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>1</span>
-            <span>200</span>
-          </div>
-        </div>
-
-        {/* Flashlight Toggle */}
+        {/* Shutter Value - Fixed at 200 */}
         <div className="flex items-center justify-between p-4 bg-card rounded-lg border">
-          <div className="flex items-center gap-3">
-            <Zap className={cn("w-5 h-5", flashEnabled ? "text-accent" : "text-muted-foreground")} />
-            <Label htmlFor="flash" className="text-foreground font-medium cursor-pointer">
-              Flashlight
-            </Label>
-          </div>
-          <Switch
-            id="flash"
-            checked={flashEnabled}
-            onCheckedChange={setFlashEnabled}
-          />
+          <Label className="text-foreground font-medium">Shutter Speed</Label>
+          <span className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
+            {shutterValue}
+          </span>
         </div>
       </div>
 
@@ -142,10 +112,6 @@ export const UploadVideoScreen = () => {
             <div>
               <p className="text-muted-foreground">Shutter</p>
               <p className="font-semibold text-foreground">{shutterValue}</p>
-            </div>
-            <div>
-              <p className="text-muted-foreground">Flash</p>
-              <p className="font-semibold text-foreground">{flashEnabled ? "ON" : "OFF"}</p>
             </div>
           </div>
         </CardContent>

@@ -1,13 +1,17 @@
 import { useState, useRef } from "react";
-import { Circle, Square, ArrowLeft } from "lucide-react";
+import { Circle, Square, ArrowLeft, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
 export const CameraScreen = () => {
   const navigate = useNavigate();
   const [isRecording, setIsRecording] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
+  const [flashEnabled, setFlashEnabled] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const startRecording = () => {
@@ -84,7 +88,23 @@ export const CameraScreen = () => {
         </div>
       </div>
 
-      <div className="p-6 bg-card border-t border-border">
+      <div className="p-6 bg-card border-t border-border space-y-4">
+        {/* Flash Toggle */}
+        <div className="flex items-center justify-between p-4 bg-background rounded-lg border">
+          <div className="flex items-center gap-3">
+            <Zap className={cn("w-5 h-5", flashEnabled ? "text-accent" : "text-muted-foreground")} />
+            <Label htmlFor="flash" className="text-foreground font-medium cursor-pointer">
+              Flash
+            </Label>
+          </div>
+          <Switch
+            id="flash"
+            checked={flashEnabled}
+            onCheckedChange={setFlashEnabled}
+          />
+        </div>
+
+        {/* Record Button */}
         <div className="flex justify-center">
           {!isRecording ? (
             <Button
@@ -104,7 +124,7 @@ export const CameraScreen = () => {
             </Button>
           )}
         </div>
-        <p className="text-center text-sm text-muted-foreground mt-4">
+        <p className="text-center text-sm text-muted-foreground">
           {isRecording ? "Tap to stop recording" : "Tap to start recording"}
         </p>
       </div>
