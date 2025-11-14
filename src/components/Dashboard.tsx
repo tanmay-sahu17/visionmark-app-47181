@@ -32,8 +32,8 @@ export const Dashboard = () => {
   return (
     <div className="flex-1 overflow-y-auto p-6 space-y-6">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold text-foreground">Welcome back, Prof. Sarah!</h2>
-        <p className="text-muted-foreground">CS Department • Computer Networks</p>
+        <h2 className="text-2xl font-bold text-foreground">Welcome, Teacher</h2>
+        <p className="text-muted-foreground">Ready to track attendance</p>
       </div>
 
       <div className="grid grid-cols-3 gap-3">
